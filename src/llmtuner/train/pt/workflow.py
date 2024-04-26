@@ -31,6 +31,10 @@ def run_pt(
     model = load_model(tokenizer, model_args, finetuning_args, training_args.do_train)
     data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
 
+    target = split_dataset(dataset, data_args, training_args)
+    print(target)
+    print(target['train_dataset'][:2])
+
     # Initialize our Trainer
     trainer = CustomTrainer(
         model=model,
