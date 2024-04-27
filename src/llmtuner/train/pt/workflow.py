@@ -34,6 +34,7 @@ def run_pt(
     target = split_dataset(dataset, data_args, training_args)
     print('target: ', target)
     print(target['train_dataset'][:2])
+    print(tokenizer.decode(target['train_dataset'][0]['input_ids']))
 
     # Initialize our Trainer
     trainer = CustomTrainer(
