@@ -67,6 +67,8 @@ def load_single_dataset(
         checksum(data_files, dataset_attr.file_sha1)
     else:
         raise NotImplementedError
+    
+    print('data_files: ', data_files)
 
     if dataset_attr.load_from == "ms_hub":
         try:
@@ -113,6 +115,7 @@ def load_single_dataset(
         num_samples = min(data_args.max_samples, len(dataset))
         dataset = dataset.select(range(num_samples))
 
+    print('dataset: ', dataset)
     return align_dataset(dataset, dataset_attr, data_args)
 
 
